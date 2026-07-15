@@ -47,7 +47,7 @@ public class ReporteService {
                 .collect(Collectors.toList());
 
         if (cuentas.isEmpty()) {
-            return new ReportePaginadoDTO(new ArrayList<>(), 0, 0, 0);
+            return new ReportePaginadoDTO(new ArrayList<>(), 0, page, 0);
         }
 
         List<Long> cuentaIds = cuentas.stream()
@@ -57,7 +57,7 @@ public class ReporteService {
         LocalDateTime fechaInicioDateTime = fechaInicio.atStartOfDay();
         LocalDateTime fechaFinDateTime = fechaFin.atTime(23, 59, 59);
 
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         Page<Movimiento> movimientoPage = movimientoRepository.findByCuentaIdsAndFechaBetween(
                 cuentaIds, fechaInicioDateTime, fechaFinDateTime, pageable);
 
@@ -111,7 +111,7 @@ public class ReporteService {
         return new ReportePaginadoDTO(
                 reportes,
                 movimientoPage.getTotalElements(),
-                movimientoPage.getNumber(),
+                page,
                 movimientoPage.getTotalPages()
         );
     }

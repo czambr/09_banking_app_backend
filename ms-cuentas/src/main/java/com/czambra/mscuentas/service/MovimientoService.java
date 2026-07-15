@@ -68,7 +68,7 @@ public class MovimientoService {
     }
 
     public MovimientoPaginadoDTO obtenerPorCuentaIdPaginado(Long cuentaId, int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         Page<Movimiento> movimientoPage = movimientoRepository.findByCuentaId(cuentaId, pageable);
 
         List<MovimientoResponseDTO> movimientos = movimientoPage.getContent().stream()
@@ -78,7 +78,7 @@ public class MovimientoService {
         return new MovimientoPaginadoDTO(
                 movimientos,
                 movimientoPage.getTotalElements(),
-                movimientoPage.getNumber(),
+                page,
                 movimientoPage.getTotalPages()
         );
     }

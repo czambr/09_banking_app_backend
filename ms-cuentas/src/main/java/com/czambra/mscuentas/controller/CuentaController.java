@@ -91,7 +91,7 @@ public class CuentaController {
             @RequestParam(required = false, defaultValue = "1") int page,
             @RequestParam(required = false, defaultValue = "10") int size) {
         if (page >= 1 && size > 0) {
-            return ResponseEntity.ok(movimientoService.obtenerPorCuentaIdPaginado(id, page - 1, size));
+            return ResponseEntity.ok(movimientoService.obtenerPorCuentaIdPaginado(id, page, size));
         }
         return ResponseEntity.ok(movimientoService.obtenerPorCuentaId(id));
     }

@@ -33,7 +33,7 @@ public class ReporteController {
             return ResponseEntity.badRequest().build();
         }
 
-        ReportePaginadoDTO reportes = reporteService.generarReporte(clienteId, fechaInicio, fechaFin, page - 1, size);
+        ReportePaginadoDTO reportes = reporteService.generarReporte(clienteId, fechaInicio, fechaFin, page, size);
         return ResponseEntity.ok(reportes);
     }
 }
