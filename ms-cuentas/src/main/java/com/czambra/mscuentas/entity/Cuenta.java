@@ -22,8 +22,8 @@ public class Cuenta {
     private Long cuentaId;
 
     @NotBlank(message = "El número de cuenta es obligatorio")
-    @Size(max = 50, message = "El número de cuenta no puede exceder 50 caracteres")
-    @Column(name = "numero_cuenta", unique = true, nullable = false, length = 50)
+    @Size(max = 10, message = "El número de cuenta no puede exceder 10 caracteres")
+    @Column(name = "numero_cuenta", unique = true, nullable = false, length = 10)
     private String numeroCuenta;
 
     @NotBlank(message = "El tipo de cuenta es obligatorio")

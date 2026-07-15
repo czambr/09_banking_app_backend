@@ -18,7 +18,7 @@ public class Cliente {
     @Column(name = "cliente_id")
     private Long clienteId;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "persona_id", nullable = false, unique = true)
     private Persona persona;
 
@@ -30,5 +30,3 @@ public class Cliente {
     @Column(nullable = false)
     private Boolean estado = true;
 }
-
-

@@ -6,11 +6,13 @@ import com.czambra.msusers.dto.ClienteUpdateDTO;
 import com.czambra.msusers.entity.Cliente;
 import com.czambra.msusers.entity.Persona;
 import com.czambra.msusers.repository.ClienteRepository;
+import com.czambra.msusers.repository.PersonaRepository;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +26,11 @@ public class ClienteController {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private PersonaRepository personaRepository;
+
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @GetMapping
     public ResponseEntity<List<ClienteResponseDTO>> obtenerTodos() {
@@ -55,9 +62,11 @@ public class ClienteController {
         persona.setDireccion(dto.getDireccion());
         persona.setTelefono(dto.getTelefono());
 
+        Persona personaGuardada = personaRepository.save(persona);
+
         Cliente cliente = new Cliente();
-        cliente.setPersona(persona);
-        cliente.setContrasena(dto.getContrasena());
+        cliente.setPersona(personaGuardada);
+        cliente.setContrasena(passwordEncoder.encode(dto.getContrasena()));
         cliente.setEstado(dto.getEstado() != null ? dto.getEstado() : true);
 
         Cliente clienteGuardado = clienteRepository.save(cliente);
@@ -84,7 +93,7 @@ public class ClienteController {
                     if (dto.getDireccion() != null) persona.setDireccion(dto.getDireccion());
                     if (dto.getTelefono() != null) persona.setTelefono(dto.getTelefono());
 
-                    if (dto.getContrasena() != null) clienteExistente.setContrasena(dto.getContrasena());
+                    if (dto.getContrasena() != null) clienteExistente.setContrasena(passwordEncoder.encode(dto.getContrasena()));
                     if (dto.getEstado() != null) clienteExistente.setEstado(dto.getEstado());
 
                     Cliente clienteActualizado = clienteRepository.save(clienteExistente);

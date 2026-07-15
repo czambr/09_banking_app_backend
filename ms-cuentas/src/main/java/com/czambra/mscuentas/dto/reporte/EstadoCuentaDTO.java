@@ -17,6 +17,7 @@ public class EstadoCuentaDTO {
     private String tipo;
     private BigDecimal saldoInicial;
     private Boolean estado;
+    private String tipoTransaccion;
     private BigDecimal movimiento;
     private BigDecimal saldoDisponible;
 }

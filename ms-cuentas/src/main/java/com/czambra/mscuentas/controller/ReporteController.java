@@ -1,6 +1,6 @@
 package com.czambra.mscuentas.controller;
 
-import com.czambra.mscuentas.dto.reporte.EstadoCuentaDTO;
+import com.czambra.mscuentas.dto.reporte.ReportePaginadoDTO;
 import com.czambra.mscuentas.service.ReporteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/reportes")
@@ -19,10 +18,12 @@ public class ReporteController {
     private ReporteService reporteService;
 
     @GetMapping
-    public ResponseEntity<List<EstadoCuentaDTO>> obtenerReporte(
+    public ResponseEntity<?> obtenerReporte(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin,
-            @RequestParam Long clienteId) {
+            @RequestParam Long clienteId,
+            @RequestParam(required = false, defaultValue = "1") int page,
+            @RequestParam(required = false, defaultValue = "10") int size) {
 
         if (fechaInicio == null || fechaFin == null || clienteId == null) {
             return ResponseEntity.badRequest().build();
@@ -32,7 +33,7 @@ public class ReporteController {
             return ResponseEntity.badRequest().build();
         }
 
-        List<EstadoCuentaDTO> reportes = reporteService.generarReporte(clienteId, fechaInicio, fechaFin);
+        ReportePaginadoDTO reportes = reporteService.generarReporte(clienteId, fechaInicio, fechaFin, page - 1, size);
         return ResponseEntity.ok(reportes);
     }
 }

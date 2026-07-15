@@ -13,11 +13,11 @@ import java.math.BigDecimal;
 public class CuentaCreateDTO {
 
     @NotBlank(message = "El número de cuenta es obligatorio")
-    @Size(max = 50, message = "El número de cuenta no puede exceder 50 caracteres")
+    @Pattern(regexp = "^[0-9]{10}$", message = "El número de cuenta debe tener exactamente 10 dígitos")
     private String numeroCuenta;
 
     @NotBlank(message = "El tipo de cuenta es obligatorio")
-    @Size(max = 50, message = "El tipo de cuenta no puede exceder 50 caracteres")
+    @Pattern(regexp = "^(AHORRO|CORRIENTE)$", message = "El tipo de cuenta debe ser AHORRO o CORRIENTE")
     private String tipoCuenta;
 
     @NotNull(message = "El saldo inicial es obligatorio")

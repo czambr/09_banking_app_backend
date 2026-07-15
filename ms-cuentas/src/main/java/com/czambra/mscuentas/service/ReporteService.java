@@ -2,11 +2,15 @@ package com.czambra.mscuentas.service;
 
 import com.czambra.mscuentas.dto.cuenta.CuentaResponseDTO;
 import com.czambra.mscuentas.dto.reporte.EstadoCuentaDTO;
+import com.czambra.mscuentas.dto.reporte.ReportePaginadoDTO;
 import com.czambra.mscuentas.entity.Cuenta;
 import com.czambra.mscuentas.entity.Movimiento;
 import com.czambra.mscuentas.repository.CuentaRepository;
 import com.czambra.mscuentas.repository.MovimientoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -34,7 +38,7 @@ public class ReporteService {
         return (nombre != null && !nombre.isEmpty()) ? nombre : "Cliente ID: " + clienteId;
     }
 
-    public List<EstadoCuentaDTO> generarReporte(Long clienteId, LocalDate fechaInicio, LocalDate fechaFin) {
+    public ReportePaginadoDTO generarReporte(Long clienteId, LocalDate fechaInicio, LocalDate fechaFin, int page, int size) {
         String nombreCliente = obtenerNombreCliente(clienteId);
 
         List<Cuenta> cuentasEntity = cuentaRepository.findByClienteId(clienteId);
@@ -43,7 +47,7 @@ public class ReporteService {
                 .collect(Collectors.toList());
 
         if (cuentas.isEmpty()) {
-            return new ArrayList<>();
+            return new ReportePaginadoDTO(new ArrayList<>(), 0, 0, 0);
         }
 
         List<Long> cuentaIds = cuentas.stream()
@@ -53,9 +57,11 @@ public class ReporteService {
         LocalDateTime fechaInicioDateTime = fechaInicio.atStartOfDay();
         LocalDateTime fechaFinDateTime = fechaFin.atTime(23, 59, 59);
 
-        List<Movimiento> movimientos = movimientoRepository.findByCuentaIdInAndFechaBetween(
-                cuentaIds, fechaInicioDateTime, fechaFinDateTime);
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Movimiento> movimientoPage = movimientoRepository.findByCuentaIdsAndFechaBetween(
+                cuentaIds, fechaInicioDateTime, fechaFinDateTime, pageable);
 
+        List<Movimiento> movimientos = movimientoPage.getContent();
         Map<Long, List<Movimiento>> movimientosPorCuenta = movimientos.stream()
                 .collect(Collectors.groupingBy(Movimiento::getCuentaId));
 
@@ -71,21 +77,19 @@ public class ReporteService {
                 saldoInicial = ultimoMovimiento.get(0).getSaldoNuevo();
             }
 
-            if (movimientosCuenta.isEmpty()) {
-                EstadoCuentaDTO reporte = new EstadoCuentaDTO();
-                reporte.setFecha(fechaInicio.format(FORMATO_FECHA));
-                reporte.setCliente(nombreCliente);
-                reporte.setNumeroCuenta(cuenta.getNumeroCuenta());
-                reporte.setTipo(cuenta.getTipoCuenta());
-                reporte.setSaldoInicial(saldoInicial);
-                reporte.setEstado(cuenta.getEstado());
-                reporte.setMovimiento(BigDecimal.ZERO);
-                reporte.setSaldoDisponible(cuenta.getSaldo());
-                reportes.add(reporte);
-            } else {
+            if (!movimientosCuenta.isEmpty()) {
                 BigDecimal saldoActual = saldoInicial;
                 for (Movimiento mov : movimientosCuenta) {
-                    BigDecimal montoMovimiento = mov.getMonto();
+                    BigDecimal montoMovimiento;
+                    String tipoTransaccion;
+
+                    if (mov.getTipoMovimiento().equals("DEPOSITO")) {
+                        montoMovimiento = mov.getMonto();
+                        tipoTransaccion = "DEPOSITO";
+                    } else {
+                        montoMovimiento = mov.getMonto().negate();
+                        tipoTransaccion = "RETIRO";
+                    }
 
                     EstadoCuentaDTO reporte = new EstadoCuentaDTO();
                     reporte.setFecha(mov.getFechaMovimiento().format(FORMATO_FECHA));
@@ -94,6 +98,7 @@ public class ReporteService {
                     reporte.setTipo(cuenta.getTipoCuenta());
                     reporte.setSaldoInicial(saldoActual);
                     reporte.setEstado(cuenta.getEstado());
+                    reporte.setTipoTransaccion(tipoTransaccion);
                     reporte.setMovimiento(montoMovimiento);
                     reporte.setSaldoDisponible(mov.getSaldoNuevo());
                     reportes.add(reporte);
@@ -103,6 +108,11 @@ public class ReporteService {
             }
         }
 
-        return reportes;
+        return new ReportePaginadoDTO(
+                reportes,
+                movimientoPage.getTotalElements(),
+                movimientoPage.getNumber(),
+                movimientoPage.getTotalPages()
+        );
     }
 }
