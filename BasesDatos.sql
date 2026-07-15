@@ -1,6 +1,3 @@
--- Script de inicialización de Base de Datos PostgreSQL
--- Ejecutar: psql -U postgres -f init_database.sql
-
 -- Crear base de datos
 CREATE DATABASE ms_users;
 
