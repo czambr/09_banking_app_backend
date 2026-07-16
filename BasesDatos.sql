@@ -1,8 +1,8 @@
--- Crear base de datos
-CREATE DATABASE ms_users;
+-- -- Crear base de datos
+-- CREATE DATABASE banking_db;
 
--- Conectarse a la base de datos
-\connect ms_users;
+-- -- Conectarse a la base de datos
+-- \connect banking_db;
 
 -- ============================================
 -- TABLA: persona (datos personales)
