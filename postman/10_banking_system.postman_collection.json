@@ -1,0 +1,1623 @@
+{
+  "info": {
+    "_postman_id": "f382d320-f2d5-4c2d-a386-b53d4d38c86f",
+    "name": "10_banking_system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "29443928"
+  },
+  "item": [
+    {
+      "name": "ms-users",
+      "item": [
+        {
+          "name": "Create client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"identificacion\": \"00000002\",\n    \"nombre\": \"Juan Perez\",\n    \"genero\": \"MASCULINO\",\n    \"edad\": 30,\n    \"direccion\": \"Calle 123, Ciudad\",\n    \"telefono\": \"0999999999\",\n    \"contrasena\": \"password123\"\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clientes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clientes"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create client",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"identificacion\": \"00000004\",\n    \"nombre\": \"Juan Perez\",\n    \"genero\": \"MASCULINO\",\n    \"edad\": 30,\n    \"direccion\": \"Calle 123, Ciudad\",\n    \"telefono\": \"0999999999\",\n    \"contrasena\": \"password123\"\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/clientes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "clientes"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 15 Jul 2026 21:25:43 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 4,\n    \"nombres\": \"Juan Perez\",\n    \"direccion\": \"Calle 123, Ciudad\",\n    \"telefono\": \"0999999999\",\n    \"estado\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Clients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/clientes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clientes"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Clients",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/clientes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "clientes"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 15 Jul 2026 21:24:45 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"nombres\": \"Juan Perez\",\n        \"direccion\": \"Calle 123, Ciudad\",\n        \"telefono\": \"0999999999\",\n        \"estado\": true\n    },\n    {\n        \"id\": 2,\n        \"nombres\": \"Juan Perez\",\n        \"direccion\": \"Calle 123, Ciudad\",\n        \"telefono\": \"0999999999\",\n        \"estado\": true\n    },\n    {\n        \"id\": 3,\n        \"nombres\": \"Juan Perez\",\n        \"direccion\": \"Calle 123, Ciudad\",\n        \"telefono\": \"0999999999\",\n        \"estado\": true\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Client By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/clientes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clientes",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Client By Id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/clientes/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "clientes",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 15 Jul 2026 21:24:49 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"nombres\": \"Juan Perez\",\n    \"direccion\": \"Calle 123, Ciudad\",\n    \"telefono\": \"0999999999\",\n    \"estado\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Client",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n     //\"identificacion\": \"1234567890\",\n     \"nombre\": \"Juan Perez final\",\n     \"genero\": \"MASCULINO\",\n    \"edad\": 25,\n    \"direccion\": \"Nueva Direccion\",\n    \"telefono\": \"0999999999\",\n    \"estado\": true\n    //\"contrasena\": \"nuevapassword\"\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clientes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clientes",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Client",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n     //\"identificacion\": \"1234567890\",\n     \"nombre\": \"Juan Perez final\",\n     \"genero\": \"MASCULINO\",\n    \"edad\": 25,\n    \"direccion\": \"Nueva Direccion\",\n    \"telefono\": \"0999999999\",\n    \"estado\": true\n    //\"contrasena\": \"nuevapassword\"\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/clientes/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "clientes",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 15 Jul 2026 21:26:12 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"nombres\": \"Juan Perez final\",\n    \"direccion\": \"Nueva Direccion\",\n    \"telefono\": \"0999999999\",\n    \"estado\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete client",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/clientes/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clientes",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ms-cuentas",
+      "item": [
+        {
+          "name": "cuentas",
+          "item": [
+            {
+              "name": "Create Cuenta",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"numeroCuenta\": \"1000210140\",\n    \"tipoCuenta\": \"AHORRO\",\n    \"saldoInicial\": 1000.00,\n    \"clienteId\": 1\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/cuentas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Create Cuenta",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"numeroCuenta\": \"100023423623\",\n    \"tipoCuenta\": \"AHORROS\",\n    \"saldoInicial\": 1000.00,\n    \"clienteId\": 1\n  }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8081/api/cuentas",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "cuentas"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 21:27:14 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"cuentaId\": 1,\n    \"numeroCuenta\": \"100023423623\",\n    \"tipoCuenta\": \"AHORROS\",\n    \"saldo\": 1000,\n    \"estado\": true,\n    \"fechaCreacion\": \"2026-07-15T16:27:14.3298422\",\n    \"fechaActualizacion\": null,\n    \"clienteId\": 1\n}"
+                }
+              ]
+            },
+            {
+              "name": "All Cuentas",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/cuentas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "All Cuentas",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8081/api/cuentas",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "cuentas"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 21:28:27 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "domain": "",
+                      "path": ""
+                    }
+                  ],
+                  "body": "[\n    {\n        \"cuentaId\": 1,\n        \"numeroCuenta\": \"100023423623\",\n        \"tipoCuenta\": \"AHORROS\",\n        \"saldo\": 1000,\n        \"estado\": true,\n        \"fechaCreacion\": \"2026-07-15T16:27:14.329842\",\n        \"fechaActualizacion\": null,\n        \"clienteId\": 1\n    },\n    {\n        \"cuentaId\": 2,\n        \"numeroCuenta\": \"100021000\",\n        \"tipoCuenta\": \"AHORROS\",\n        \"saldo\": 1000,\n        \"estado\": true,\n        \"fechaCreacion\": \"2026-07-15T16:27:40.6076\",\n        \"fechaActualizacion\": null,\n        \"clienteId\": 1\n    },\n    {\n        \"cuentaId\": 3,\n        \"numeroCuenta\": \"1000210100\",\n        \"tipoCuenta\": \"DEBITO\",\n        \"saldo\": 1000,\n        \"estado\": true,\n        \"fechaCreacion\": \"2026-07-15T16:27:51.601161\",\n        \"fechaActualizacion\": null,\n        \"clienteId\": 1\n    }\n]"
+                }
+              ]
+            },
+            {
+              "name": "Cuenta By Id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/cuentas/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "1"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Cuenta By Id",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8081/api/cuentas/2",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "cuentas",
+                        "2"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 21:29:11 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"cuentaId\": 2,\n    \"numeroCuenta\": \"100021000\",\n    \"tipoCuenta\": \"AHORROS\",\n    \"saldo\": 1000,\n    \"estado\": true,\n    \"fechaCreacion\": \"2026-07-15T16:27:40.6076\",\n    \"fechaActualizacion\": null,\n    \"clienteId\": 1\n}"
+                }
+              ]
+            },
+            {
+              "name": "Cuenta By Client Id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/cuentas/cliente/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "cliente",
+                    "1"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Cuenta By Client Id",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8081/api/cuentas/cliente/1",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "cuentas",
+                        "cliente",
+                        "1"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 21:29:43 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "domain": "",
+                      "path": ""
+                    }
+                  ],
+                  "body": "[\n    {\n        \"cuentaId\": 1,\n        \"numeroCuenta\": \"100023423623\",\n        \"tipoCuenta\": \"AHORROS\",\n        \"saldo\": 1000,\n        \"estado\": true,\n        \"fechaCreacion\": \"2026-07-15T16:27:14.329842\",\n        \"fechaActualizacion\": null,\n        \"clienteId\": 1\n    },\n    {\n        \"cuentaId\": 2,\n        \"numeroCuenta\": \"100021000\",\n        \"tipoCuenta\": \"AHORROS\",\n        \"saldo\": 1000,\n        \"estado\": true,\n        \"fechaCreacion\": \"2026-07-15T16:27:40.6076\",\n        \"fechaActualizacion\": null,\n        \"clienteId\": 1\n    },\n    {\n        \"cuentaId\": 3,\n        \"numeroCuenta\": \"1000210100\",\n        \"tipoCuenta\": \"DEBITO\",\n        \"saldo\": 1000,\n        \"estado\": true,\n        \"fechaCreacion\": \"2026-07-15T16:27:51.601161\",\n        \"fechaActualizacion\": null,\n        \"clienteId\": 1\n    }\n]"
+                }
+              ]
+            },
+            {
+              "name": "UPD Cuenta",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"tipoCuenta\": \"CORRIENTE\",\n    \"saldo\": 1800.00\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/cuentas/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "1"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "UPD Cuenta",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"tipoCuenta\": \"CORRIENTE\",\n    \"saldo\": 1800.00\n  }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8081/api/cuentas/1",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "cuentas",
+                        "1"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 21:29:59 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"cuentaId\": 1,\n    \"numeroCuenta\": \"100023423623\",\n    \"tipoCuenta\": \"CORRIENTE\",\n    \"saldo\": 1800,\n    \"estado\": true,\n    \"fechaCreacion\": \"2026-07-15T16:27:14.329842\",\n    \"fechaActualizacion\": null,\n    \"clienteId\": 1\n}"
+                }
+              ]
+            },
+            {
+              "name": "Delete Cuenta By Id",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/cuentas/3",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "3"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "transacciones",
+          "item": [
+            {
+              "name": "Deposito",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"tipoMovimiento\": \"DEPOSITO\",\n    \"monto\": 500.00\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/cuentas/1/movimientos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "1",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Deposito",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"tipoMovimiento\": \"RETIRO\",\n    \"monto\": 500.00\n  }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8081/api/cuentas/1/movimientos",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "cuentas",
+                        "1",
+                        "movimientos"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 21:31:06 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "domain": "",
+                      "path": ""
+                    }
+                  ],
+                  "body": "{\n    \"movimientoId\": 4,\n    \"cuentaId\": 1,\n    \"tipoMovimiento\": \"RETIRO\",\n    \"monto\": 500,\n    \"saldoAnterior\": 1300,\n    \"saldoNuevo\": 800,\n    \"fechaMovimiento\": \"2026-07-15T16:31:06.8213748\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Retiro con fondos",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"tipoMovimiento\": \"DSFSDF\",\n    \"monto\": 200.00\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/cuentas/2/movimientos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "2",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Retiro con fondos",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"tipoMovimiento\": \"RETIRO\",\n    \"monto\": 200.00\n  }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8081/api/cuentas/2/movimientos",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "cuentas",
+                        "2",
+                        "movimientos"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 21:31:50 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"movimientoId\": 7,\n    \"cuentaId\": 2,\n    \"tipoMovimiento\": \"RETIRO\",\n    \"monto\": 200,\n    \"saldoAnterior\": 600,\n    \"saldoNuevo\": 400,\n    \"fechaMovimiento\": \"2026-07-15T16:31:50.2379105\"\n}"
+                },
+                {
+                  "name": "Retiro con fondos - 400",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"tipoMovimiento\": \"DSFSDF\",\n    \"monto\": 200.00\n  }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8081/api/cuentas/2/movimientos",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "cuentas",
+                        "2",
+                        "movimientos"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 21:32:07 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"details\": [\n        {\n            \"field\": \"tipoMovimiento\",\n            \"message\": \"El tipo de movimiento debe ser DEPOSITO o RETIRO\"\n        }\n    ],\n    \"error\": \"Validación fallida\",\n    \"message\": \"Error de validación\",\n    \"timestamp\": \"2026-07-15T16:32:07.095992500\",\n    \"status\": 400\n}"
+                }
+              ]
+            },
+            {
+              "name": "Retiro sin saldo",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"tipoMovimiento\": \"XCVXCVCX\",\n    \"monto\": 999999.00\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/cuentas/1/movimientos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "1",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Retiro sin saldo",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"tipoMovimiento\": \"RETIRO\",\n    \"monto\": 999999.00\n  }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8081/api/cuentas/1/movimientos",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "cuentas",
+                        "1",
+                        "movimientos"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain;charset=UTF-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "32"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 21:32:36 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\"error\": \"Saldo no disponible\"}"
+                },
+                {
+                  "name": "Retiro sin saldo - 400",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"tipoMovimiento\": \"XCVXCVCX\",\n    \"monto\": 999999.00\n  }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8081/api/cuentas/1/movimientos",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "cuentas",
+                        "1",
+                        "movimientos"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 21:32:53 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"details\": [\n        {\n            \"field\": \"tipoMovimiento\",\n            \"message\": \"El tipo de movimiento debe ser DEPOSITO o RETIRO\"\n        }\n    ],\n    \"error\": \"Validación fallida\",\n    \"message\": \"Error de validación\",\n    \"timestamp\": \"2026-07-15T16:32:53.696486900\",\n    \"status\": 400\n}"
+                }
+              ]
+            },
+            {
+              "name": "Listar movimientos",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/cuentas/1/movimientos?page=1&size=4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "1",
+                    "movimientos"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "description": "page 1 by default"
+                    },
+                    {
+                      "key": "size",
+                      "value": "4",
+                      "description": "default 10"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Listar movimientos",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8081/api/cuentas/1/movimientos?page=1&size=4",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "cuentas",
+                        "1",
+                        "movimientos"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1",
+                          "description": "page 1 by default"
+                        },
+                        {
+                          "key": "size",
+                          "value": "4",
+                          "description": "default 10"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 23:28:41 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"movimientos\": [\n        {\n            \"movimientoId\": 1,\n            \"cuentaId\": 1,\n            \"tipoMovimiento\": \"DEPOSITO\",\n            \"monto\": 500,\n            \"saldoAnterior\": 1000,\n            \"saldoNuevo\": 1500,\n            \"fechaMovimiento\": \"2026-07-15T18:07:33.970776\"\n        },\n        {\n            \"movimientoId\": 2,\n            \"cuentaId\": 1,\n            \"tipoMovimiento\": \"DEPOSITO\",\n            \"monto\": 500,\n            \"saldoAnterior\": 1500,\n            \"saldoNuevo\": 2000,\n            \"fechaMovimiento\": \"2026-07-15T18:22:55.169076\"\n        },\n        {\n            \"movimientoId\": 3,\n            \"cuentaId\": 1,\n            \"tipoMovimiento\": \"DEPOSITO\",\n            \"monto\": 500,\n            \"saldoAnterior\": 2000,\n            \"saldoNuevo\": 2500,\n            \"fechaMovimiento\": \"2026-07-15T18:22:56.155869\"\n        },\n        {\n            \"movimientoId\": 4,\n            \"cuentaId\": 1,\n            \"tipoMovimiento\": \"DEPOSITO\",\n            \"monto\": 500,\n            \"saldoAnterior\": 2500,\n            \"saldoNuevo\": 3000,\n            \"fechaMovimiento\": \"2026-07-15T18:22:56.920856\"\n        }\n    ],\n    \"total\": 8,\n    \"paginaActual\": 1,\n    \"totalPaginas\": 2\n}"
+                }
+              ]
+            },
+            {
+              "name": "Reporte de movimiento",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/reportes?fechaInicio=2024-01-01&fechaFin=2026-12-31&clienteId=1&page=1&size=2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "reportes"
+                  ],
+                  "query": [
+                    {
+                      "key": "fechaInicio",
+                      "value": "2024-01-01"
+                    },
+                    {
+                      "key": "fechaFin",
+                      "value": "2026-12-31"
+                    },
+                    {
+                      "key": "clienteId",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "size",
+                      "value": "2",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Reporte de movimiento",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8081/api/reportes?fechaInicio=2024-01-01&fechaFin=2026-12-31&clienteId=1&page=1&size=2",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "reportes"
+                      ],
+                      "query": [
+                        {
+                          "key": "fechaInicio",
+                          "value": "2024-01-01"
+                        },
+                        {
+                          "key": "fechaFin",
+                          "value": "2026-12-31"
+                        },
+                        {
+                          "key": "clienteId",
+                          "value": "1"
+                        },
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "size",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Method"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 15 Jul 2026 23:29:02 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"movimientos\": [\n        {\n            \"fecha\": \"15-07-2026\",\n            \"cliente\": \"Juan Perez\",\n            \"numeroCuenta\": \"1000210140\",\n            \"tipo\": \"AHORRO\",\n            \"saldoInicial\": 5000,\n            \"estado\": true,\n            \"tipoTransaccion\": \"DEPOSITO\",\n            \"movimiento\": 500,\n            \"saldoDisponible\": 1500\n        },\n        {\n            \"fecha\": \"15-07-2026\",\n            \"cliente\": \"Juan Perez\",\n            \"numeroCuenta\": \"1000210140\",\n            \"tipo\": \"AHORRO\",\n            \"saldoInicial\": 1500,\n            \"estado\": true,\n            \"tipoTransaccion\": \"DEPOSITO\",\n            \"movimiento\": 500,\n            \"saldoDisponible\": 2000\n        }\n    ],\n    \"total\": 8,\n    \"paginaActual\": 1,\n    \"totalPaginas\": 4\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
